@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpvg16lwmxeqr"]
+
+[ext_resource type="Script" path="res://ball.cs" id="1_s0rgh"]
+[ext_resource type="Texture2D" uid="uid://nnmwhi01jisu" path="res://basketball.png" id="1_vu3cg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5cib"]
+
+[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("ray1", "ray2", "ray3", "ray4", "ray5", "ray6", "ray7", "ray8")]
+script = ExtResource("1_s0rgh")
+ray1 = NodePath("RayCast2D")
+ray2 = NodePath("RayCast2D2")
+ray3 = NodePath("RayCast2D4")
+ray4 = NodePath("RayCast2D5")
+ray5 = NodePath("RayCast2D6")
+ray6 = NodePath("RayCast2D7")
+ray7 = NodePath("RayCast2D8")
+ray8 = NodePath("RayCast2D9")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_r5cib")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.88351e-05, -1.00001)
+scale = Vector2(0.827273, 0.827273)
+texture = ExtResource("1_vu3cg")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+rotation = 0.785398
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+rotation = 2.35619
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D6" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D7" type="RayCast2D" parent="."]
+rotation = -0.785398
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D8" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 93)
+
+[node name="RayCast2D9" type="RayCast2D" parent="."]
+rotation = -2.35619
+target_position = Vector2(0, 93)

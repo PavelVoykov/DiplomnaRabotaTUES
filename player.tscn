@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://duy5nd0wehuwv"]
+
+[ext_resource type="Texture2D" uid="uid://dksfegd6v2dg1" path="res://mech.png" id="1_yuo01"]
+[ext_resource type="Script" path="res://player.cs" id="2_fldyu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2s3k0"]
+friction = 0.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0pxl"]
+size = Vector2(20, 62)
+
+[node name="player" type="RigidBody2D" node_paths=PackedStringArray("ray1", "ray2")]
+position = Vector2(246, 70)
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_2s3k0")
+gravity_scale = 4.0
+lock_rotation = true
+script = ExtResource("2_fldyu")
+ray1 = NodePath("RayCast2D")
+ray2 = NodePath("RayCast2D2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 21)
+shape = SubResource("RectangleShape2D_o0pxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("1_yuo01")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-9, 8)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(9, 8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
