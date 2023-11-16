@@ -1,0 +1,155 @@
+[gd_scene load_steps=32 format=3 uid="uid://dthn5m5qqk5v8"]
+
+[ext_resource type="Script" path="res://scripts/player.cs" id="1_82y4l"]
+[ext_resource type="Texture2D" uid="uid://hnvq07vbj5ox" path="res://assets/sprites/mech/Jump (6).png" id="2_p4vl5"]
+[ext_resource type="Texture2D" uid="uid://ckybfvq8gi1pj" path="res://assets/sprites/mech/Jump (7).png" id="3_743qp"]
+[ext_resource type="Texture2D" uid="uid://dg6gyg4sawtom" path="res://assets/sprites/mech/Jump (8).png" id="4_57a6s"]
+[ext_resource type="Texture2D" uid="uid://wyfxixe05u3g" path="res://assets/sprites/mech/Jump (9).png" id="5_jppb2"]
+[ext_resource type="Texture2D" uid="uid://oqxhgdm1yyma" path="res://assets/sprites/mech/Jump (10).png" id="6_h5ux2"]
+[ext_resource type="Texture2D" uid="uid://pa76pugorjy6" path="res://assets/sprites/mech/Idle (1).png" id="7_5n6eg"]
+[ext_resource type="Texture2D" uid="uid://b1tvbdtnruxen" path="res://assets/sprites/mech/Idle (2).png" id="8_7hgyi"]
+[ext_resource type="Texture2D" uid="uid://duj2cgn05nruw" path="res://assets/sprites/mech/Idle (3).png" id="9_2hmra"]
+[ext_resource type="Texture2D" uid="uid://dt8uwi7anglqx" path="res://assets/sprites/mech/Idle (4).png" id="10_u1xp3"]
+[ext_resource type="Texture2D" uid="uid://bqsmayk1mjpke" path="res://assets/sprites/mech/Idle (5).png" id="11_qw6t7"]
+[ext_resource type="Texture2D" uid="uid://c18horpgggoe8" path="res://assets/sprites/mech/Idle (6).png" id="12_xj2sy"]
+[ext_resource type="Texture2D" uid="uid://d3ql3oinewd77" path="res://assets/sprites/mech/Idle (7).png" id="13_pgy02"]
+[ext_resource type="Texture2D" uid="uid://cmqkkbfuv6hc8" path="res://assets/sprites/mech/Idle (8).png" id="14_rs525"]
+[ext_resource type="Texture2D" uid="uid://bdp2m6wdh2xwr" path="res://assets/sprites/mech/Idle (9).png" id="15_tjubs"]
+[ext_resource type="Texture2D" uid="uid://beuyyaicb5gp8" path="res://assets/sprites/mech/Idle (10).png" id="16_37j60"]
+[ext_resource type="Texture2D" uid="uid://cevwn0w7f0xq5" path="res://assets/sprites/mech/Jump (1).png" id="17_igynt"]
+[ext_resource type="Texture2D" uid="uid://cs6pj2tx0rtda" path="res://assets/sprites/mech/Jump (2).png" id="18_nh6fw"]
+[ext_resource type="Texture2D" uid="uid://dqd85fqblmu7c" path="res://assets/sprites/mech/Jump (3).png" id="19_ji7ck"]
+[ext_resource type="Texture2D" uid="uid://s3gvj3j1038q" path="res://assets/sprites/mech/Jump (4).png" id="20_lofd0"]
+[ext_resource type="Texture2D" uid="uid://dblvmpvqbtyvt" path="res://assets/sprites/mech/Jump (5).png" id="21_p1dk5"]
+[ext_resource type="Texture2D" uid="uid://bw2kwo2fm2vko" path="res://assets/sprites/mech/Run (1).png" id="22_fefxy"]
+[ext_resource type="Texture2D" uid="uid://mq3oyxclo1e0" path="res://assets/sprites/mech/Run (2).png" id="23_fm37w"]
+[ext_resource type="Texture2D" uid="uid://dokxirgb1kp6x" path="res://assets/sprites/mech/Run (3).png" id="24_s0cjp"]
+[ext_resource type="Texture2D" uid="uid://bu0oj6bek8rgp" path="res://assets/sprites/mech/Run (4).png" id="25_guq5g"]
+[ext_resource type="Texture2D" uid="uid://d3kj8vfdo8wrr" path="res://assets/sprites/mech/Run (5).png" id="26_22vkb"]
+[ext_resource type="Texture2D" uid="uid://clm8j3tw7dy5m" path="res://assets/sprites/mech/Run (6).png" id="27_ci1m2"]
+[ext_resource type="Texture2D" uid="uid://c5rwr7r1b30ty" path="res://assets/sprites/mech/Run (7).png" id="28_nl872"]
+[ext_resource type="Texture2D" uid="uid://ds54ne4046r2v" path="res://assets/sprites/mech/Run (8).png" id="29_635e7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f6q2"]
+size = Vector2(102, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qeu3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p4vl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_743qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_57a6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jppb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h5ux2")
+}],
+"loop": false,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5n6eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7hgyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2hmra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u1xp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qw6t7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xj2sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pgy02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rs525")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tjubs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_37j60")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_igynt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_nh6fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ji7ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lofd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_p1dk5")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_fefxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_fm37w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_s0cjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_guq5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_22vkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ci1m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_nl872")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_635e7")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 30.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_82y4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5f6q2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -1)
+scale = Vector2(0.335, 0.349)
+sprite_frames = SubResource("SpriteFrames_qeu3s")
+animation = &"Run"
+
+[node name="Camera2D" type="Camera2D" parent="."]
