@@ -1,0 +1,30 @@
+{
+    "activeFile": "TileMapDimention1.1.tsx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "TileMapDimention1.1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "TileSetDimention1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.75
+        }
+    },
+    "last.imagePath": "C:/Users/Pablo/Documents/GodotProjects/test/assets/sprites/tilemap",
+    "openFiles": [
+        "TileSetDimention1.tsx",
+        "TileMapDimention1.1.tsx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "TileSetDimention1.tsx",
+        "TileMapDimention1.1.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

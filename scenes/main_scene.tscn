@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg618mp1ktey8"]
 
-[ext_resource type="PackedScene" uid="uid://cbss6qgqh1vor" path="res://scenes/wall.tscn" id="2_c3elw"]
-[ext_resource type="PackedScene" uid="uid://dthn5m5qqk5v8" path="res://scenes/player.tscn" id="3_djeli"]
+[ext_resource type="PackedScene" uid="uid://cbss6qgqh1vor" path="res://assets/objects/wall.tscn" id="2_c3elw"]
+[ext_resource type="PackedScene" uid="uid://dthn5m5qqk5v8" path="res://assets/characters/player/player.tscn" id="3_djeli"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(475, 384)

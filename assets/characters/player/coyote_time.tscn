@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blwb0tomsqi5g"]
+
+[ext_resource type="Script" path="res://scripts/coyote_time.cs" id="1_gyxon"]
+
+[node name="CoyoteTime" type="Node2D"]
+script = ExtResource("1_gyxon")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
