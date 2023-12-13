@@ -10,10 +10,8 @@ public partial class bullet : RayCast2D
 		if(this.IsColliding()){
 			Vector2 coordinates = this.GetCollisionPoint();
 			Object collider = this.GetCollider();
-			if (collider is RigidBody2D nodeCollider)
-			{
-				nodeCollider.QueueFree();
-			}
+			Node shape = this.GetCollider() as Node;
+			GD.Print(shape.GetNode("CollisionShape2D"));
 			this.QueueFree();
 			
 		}
