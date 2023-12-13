@@ -16,25 +16,28 @@ public partial class player: CharacterBody2D{
 		[Export]
 		public float coyoteDuration {get; set;} = .01F;
 		
+		private PackedScene bulletScene;
 		
 		int speed = 0;
 		public bool isJumpPressed = false;
 		public bool isDashPressed = false;
 		public bool isCoyoteTriggered = false;
 		public bool jumped = false;
+		public bool shoot = false;
 		public AnimatedSprite2D sprite;
 		public Node2D dash;
 		public Node2D coyote_time;
 		public RayCast2D ceiling_ray;
 		Vector2 UP_DIRECTION = new Vector2(0, -1);
 		Vector2 velocity = Vector2.Zero;
-		
+		private bullet bullet;
 		public override void _Ready(){
 			
 			sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			dash = GetNode<Node2D>("Dash");
 			coyote_time = GetNode<Node2D>("CoyoteTime");
 			ceiling_ray = GetNode<RayCast2D>("CeilingCheck");
+			bulletScene = ResourceLoader.Load<PackedScene>("res://assets/objects/bullet.tscn");
 		}
 		
 		public override void _PhysicsProcess(double delta){	
@@ -72,6 +75,18 @@ public partial class player: CharacterBody2D{
 				isDashPressed = false;
 			}
 			
+			if(Input.IsActionPressed("shoot") && !shoot){
+				shoot = true;
+				bullet = (bullet)bulletScene.Instantiate();
+				AddChild(bullet);
+				Vector2 mousePosition = GetGlobalMousePosition();
+				float angle = Mathf.Atan2(mousePosition.Y - this.GlobalPosition.Y, mousePosition.X - this.GlobalPosition.X);
+				bullet.Rotation = Mathf.DegToRad(Mathf.RadToDeg(angle)-90);
+				
+				
+			}else if(Input.IsActionJustReleased("shoot")){
+				shoot = false;
+			}
 			
 			if(jump && !jumped){
 				sprite.Play("Jump");

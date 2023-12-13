@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://s6h33yyn53jw"]
+
+[ext_resource type="Script" path="res://scripts/bullet.cs" id="1_dem5x"]
+
+[sub_resource type="Gradient" id="Gradient_61uxw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2i3gn"]
+gradient = SubResource("Gradient_61uxw")
+
+[node name="Bullet" type="RayCast2D"]
+target_position = Vector2(0, 4500)
+collision_mask = 128
+script = ExtResource("1_dem5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11.5, 2249.5)
+scale = Vector2(0.640625, 70.2969)
+texture = SubResource("GradientTexture2D_2i3gn")
