@@ -12,6 +12,7 @@ public partial class bullet : RayCast2D
 			Object collider = this.GetCollider();
 			Node shape = this.GetCollider() as Node;
 			GD.Print(shape.GetNode("CollisionShape2D"));
+			//shape.QueueFree();
 			this.QueueFree();
 			
 		}

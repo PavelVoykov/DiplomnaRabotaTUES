@@ -38,10 +38,11 @@ public partial class player: CharacterBody2D{
 			coyote_time = GetNode<Node2D>("CoyoteTime");
 			ceiling_ray = GetNode<RayCast2D>("CeilingCheck");
 			bulletScene = ResourceLoader.Load<PackedScene>("res://assets/objects/bullet.tscn");
+		
 		}
 		
 		public override void _PhysicsProcess(double delta){	
-			
+
 			bool jump = Input.IsActionPressed("jump") && !isJumpPressed && (IsOnFloor() || (bool)coyote_time.Call("isCoyote") && !jumped);
 			bool falling = !IsOnFloor() && Velocity.Y > 0.0;
 			bool jump_canclled = Input.IsActionJustReleased("jump") && Velocity.Y < 0.0;
@@ -118,6 +119,11 @@ public partial class player: CharacterBody2D{
 			}
 			
 			Velocity = velocity;
+			this.Position = new Vector2(0, 0);
 			MoveAndSlide();
+		}
+		
+		 public Vector2 getVelocity(){
+			return velocity;
 		}
 }
