@@ -42,84 +42,85 @@ public partial class player: CharacterBody2D{
 		}
 		
 		public override void _PhysicsProcess(double delta){	
-
-			bool jump = Input.IsActionPressed("jump") && !isJumpPressed && (IsOnFloor() || (bool)coyote_time.Call("isCoyote") && !jumped);
-			bool falling = !IsOnFloor() && Velocity.Y > 0.0;
-			bool jump_canclled = Input.IsActionJustReleased("jump") && Velocity.Y < 0.0;
-			bool idle = IsOnFloor() && Mathf.IsZeroApprox(velocity.X);
-			if((bool)dash.Call("isDashing"))	{
-				speed = dashSpeed;
-			}else{
-				speed = movementSpeed;
-			}
-			
-			if(Input.IsActionPressed("dash") && !isDashPressed){
-				dash.Call("startDash", dashLength);
-				isDashPressed = true;
-			}
-			if(jump){
-				velocity.Y = -jump_str;
-				isJumpPressed = true;
-			}else if(jump){
-				velocity.Y = -jump_str;
-				isJumpPressed = true;
-			}else if(jump_canclled){
-				velocity.Y = 0;
-			}
-			if(ceiling_ray.IsColliding()){
-				velocity.Y = (float)(gravity*delta);
-			}
-			if(Input.IsActionJustReleased("jump")){
-				isJumpPressed = false;
-			}
-			if(Input.IsActionJustReleased("dash")){
-				isDashPressed = false;
-			}
-			
-			if(Input.IsActionPressed("shoot") && !shoot){
-				shoot = true;
-				bullet = (bullet)bulletScene.Instantiate();
-				AddChild(bullet);
-				Vector2 mousePosition = GetGlobalMousePosition();
-				float angle = Mathf.Atan2(mousePosition.Y - this.GlobalPosition.Y, mousePosition.X - this.GlobalPosition.X);
-				bullet.Rotation = Mathf.DegToRad(Mathf.RadToDeg(angle)-90);
+			if (IsMultiplayerAuthority()){
+				bool jump = Input.IsActionPressed("jump") && !isJumpPressed && (IsOnFloor() || (bool)coyote_time.Call("isCoyote") && !jumped);
+				bool falling = !IsOnFloor() && Velocity.Y > 0.0;
+				bool jump_canclled = Input.IsActionJustReleased("jump") && Velocity.Y < 0.0;
+				bool idle = IsOnFloor() && Mathf.IsZeroApprox(velocity.X);
+				if((bool)dash.Call("isDashing"))	{
+					speed = dashSpeed;
+				}else{
+					speed = movementSpeed;
+				}
 				
+				if(Input.IsActionPressed("dash") && !isDashPressed){
+					dash.Call("startDash", dashLength);
+					isDashPressed = true;
+				}
+				if(jump){
+					velocity.Y = -jump_str;
+					isJumpPressed = true;
+				}else if(jump){
+					velocity.Y = -jump_str;
+					isJumpPressed = true;
+				}else if(jump_canclled){
+					velocity.Y = 0;
+				}
+				if(ceiling_ray.IsColliding()){
+					velocity.Y = (float)(gravity*delta);
+				}
+				if(Input.IsActionJustReleased("jump")){
+					isJumpPressed = false;
+				}
+				if(Input.IsActionJustReleased("dash")){
+					isDashPressed = false;
+				}
 				
-			}else if(Input.IsActionJustReleased("shoot")){
-				shoot = false;
+				if(Input.IsActionPressed("shoot") && !shoot){
+					shoot = true;
+					bullet = (bullet)bulletScene.Instantiate();
+					AddChild(bullet);
+					Vector2 mousePosition = GetGlobalMousePosition();
+					float angle = Mathf.Atan2(mousePosition.Y - this.GlobalPosition.Y, mousePosition.X - this.GlobalPosition.X);
+					bullet.Rotation = Mathf.DegToRad(Mathf.RadToDeg(angle)-90);
+					
+					
+				}else if(Input.IsActionJustReleased("shoot")){
+					shoot = false;
+				}
+				
+				if(jump && !jumped){
+					sprite.Play("Jump");
+					jumped = true;
+				}else if(idle){
+					sprite.Play("Idle");
+					isCoyoteTriggered = false;
+					jumped = false;
+				}else  if(falling && !isCoyoteTriggered){
+					coyote_time.Call("startTime", coyoteDuration);
+					sprite.Play("Falling");
+					isCoyoteTriggered = true;
+				}else if(Mathf.Abs(velocity.X) > 0 && IsOnFloor()){
+					sprite.Play("Run");
+					isCoyoteTriggered = false;
+					jumped = false;
+				}
+				
+				velocity.X = (Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left")) * speed;
+				velocity.Y += (float)(gravity*delta);
+				
+				if(IsOnFloor() && !jump){
+					velocity.Y = 0;
+				}
+				if(velocity.X > 0){
+					sprite.FlipH = false;
+				}else if(velocity.X < 0){
+					sprite.FlipH = true;
+				}
+				
+				Velocity = velocity;
+				this.Position = new Vector2(0, 0);
 			}
-			
-			if(jump && !jumped){
-				sprite.Play("Jump");
-				jumped = true;
-			}else if(idle){
-				sprite.Play("Idle");
-				isCoyoteTriggered = false;
-				jumped = false;
-			}else  if(falling && !isCoyoteTriggered){
-				coyote_time.Call("startTime", coyoteDuration);
-				sprite.Play("Falling");
-				isCoyoteTriggered = true;
-			}else if(Mathf.Abs(velocity.X) > 0 && IsOnFloor()){
-				sprite.Play("Run");
-				isCoyoteTriggered = false;
-				jumped = false;
-			}
-			
-			velocity.X = (Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left")) * speed;
-			velocity.Y += (float)(gravity*delta);
-			
-			if(IsOnFloor() && !jump){
-				velocity.Y = 0;
-			}
-			if(velocity.X > 0){
-				sprite.FlipH = false;
-			}else if(velocity.X < 0){
-				sprite.FlipH = true;
-			}
-			
-			Velocity = velocity;
-			this.Position = new Vector2(0, 0);
 			MoveAndSlide();
 		}
 		

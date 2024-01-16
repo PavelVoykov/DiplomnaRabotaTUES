@@ -35,21 +35,21 @@ public partial class map_switch : Node2D
 					player4.Call("deactivate");
 					activeMap = 1;
 					GD.Print("Map1");	
-		}else if(Input.IsActionJustReleased("map2")){
+		}else if(Input.IsActionJustReleased("map2") && !(bool)p2check.Call("Overlapps")){
 					player1.Call("deactivate");
 					player2.Call("activate");
 					player3.Call("deactivate");
 					player4.Call("deactivate");
 					activeMap = 2;
 					GD.Print("Map2");	
-		}else if(Input.IsActionJustReleased("map3")){
+		}else if(Input.IsActionJustReleased("map3") && !(bool)p3check.Call("Overlapps")){
 					player1.Call("deactivate");
 					player2.Call("deactivate");
 					player3.Call("activate");
 					player4.Call("deactivate");
 					activeMap = 3;
 					GD.Print("Map3");	
-		}else if(Input.IsActionJustReleased("map4")){
+		}else if(Input.IsActionJustReleased("map4") && !(bool)p4check.Call("Overlapps")){
 					player1.Call("deactivate");
 					player2.Call("deactivate");
 					player3.Call("deactivate");
@@ -81,4 +81,5 @@ public partial class map_switch : Node2D
 		}
 		
 	}
+	
 }
