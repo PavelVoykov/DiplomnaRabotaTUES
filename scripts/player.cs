@@ -31,6 +31,7 @@ public partial class player: CharacterBody2D{
 		Vector2 UP_DIRECTION = new Vector2(0, -1);
 		Vector2 velocity = Vector2.Zero;
 		private bullet bullet;
+		private Camera2D camera;
 		public override void _Ready(){
 			
 			sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -38,7 +39,9 @@ public partial class player: CharacterBody2D{
 			coyote_time = GetNode<Node2D>("CoyoteTime");
 			ceiling_ray = GetNode<RayCast2D>("CeilingCheck");
 			bulletScene = ResourceLoader.Load<PackedScene>("res://assets/objects/bullet.tscn");
-		
+			camera = GetNode<Camera2D>("Camera2D");
+			camera.Enabled = false;
+			
 		}
 		
 		public override void _PhysicsProcess(double delta){	
@@ -109,7 +112,7 @@ public partial class player: CharacterBody2D{
 				velocity.X = (Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left")) * speed;
 				velocity.Y += (float)(gravity*delta);
 				
-				if(IsOnFloor() && !jump){
+				if((IsOnFloor() && !jump) || !camera.Enabled){
 					velocity.Y = 0;
 				}
 				if(velocity.X > 0){

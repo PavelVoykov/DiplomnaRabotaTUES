@@ -4,17 +4,17 @@ using System;
 public partial class multiplayer : Node2D
 {
 	public ENetMultiplayerPeer peer;
-	private PackedScene player;
-	private turn_on pinst;
+	private PackedScene maps_node;
+	private map_switch maps;
+	private Camera2D camera;
 	[Signal]
 	public delegate void PlayerConnectedDelegateEventHandler(int id);
 	public event PlayerConnectedDelegateEventHandler PlayerConnected;
-	public Node2D node;
 	public override void _Ready()
 	{
 		peer = new ENetMultiplayerPeer();
-		player = ResourceLoader.Load<PackedScene>("res://assets/characters/player/player.tscn");
-		node = GetNode<Node2D>("Node2D");
+		maps_node = ResourceLoader.Load<PackedScene>("res://scenes/node_2d.tscn");
+		camera = GetNode<Camera2D>("Camera2D");
 	}
 	
 	private void _on_host_pressed(){
@@ -24,12 +24,12 @@ public partial class multiplayer : Node2D
 		PlayerConnected += AddPlayer;
 		AddPlayer();
 		GetNode<Control>("Host").ReleaseFocus();
-		node.ProcessMode = Node.ProcessModeEnum.Inherit;
+		camera.Enabled = false;
 	}
-	private void AddPlayer(int id = 1){
-		pinst = (turn_on)player.Instantiate();
-		pinst.Name = id.ToString();
-		AddChild(pinst);
+	private void AddPlayer(int id = 11){
+		maps = (map_switch)maps_node.Instantiate();
+		maps.Name = id.ToString();
+		AddChild(maps);
 	}
 	private void _on_join_pressed(){
 	peer.CreateClient("127.0.0.1", 135);
@@ -37,7 +37,6 @@ public partial class multiplayer : Node2D
 	GetNode<Control>("Join").ReleaseFocus();
 	}
 }
-
 
 
 

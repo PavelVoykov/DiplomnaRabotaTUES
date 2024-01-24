@@ -15,14 +15,15 @@ public partial class map_switch : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		player1 = GetNode("TileMap").GetNode<Node2D>("Player");
+		player1 = GetNode("TileMap").GetNode<Node2D>("1");
 		p1check = player1.GetNode<Area2D>("Area2D");
-		player2 = GetNode("TileMap2").GetNode<Node2D>("Player");
+		player2 = GetNode("TileMap2").GetNode<Node2D>("1");
 		p2check = player2.GetNode<Area2D>("Area2D");
-		player3 = GetNode("TileMap3").GetNode<Node2D>("Player");
+		player3 = GetNode("TileMap3").GetNode<Node2D>("1");
 		p3check = player3.GetNode<Area2D>("Area2D");
-		player4 = GetNode("TileMap4").GetNode<Node2D>("Player");
+		player4 = GetNode("TileMap4").GetNode<Node2D>("1");
 		p4check = player4.GetNode<Area2D>("Area2D");
+		player1.Call("activate");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
