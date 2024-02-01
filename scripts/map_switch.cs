@@ -24,6 +24,7 @@ public partial class map_switch : Node2D
 		player4 = GetNode("TileMap4").GetNode<Node2D>("1");
 		p4check = player4.GetNode<Area2D>("Area2D");
 		player1.Call("activate");
+		GetParent().GetNode<MultiplayerSpawner>("MultiplayerSpawner").SpawnPath = this.GetPath();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

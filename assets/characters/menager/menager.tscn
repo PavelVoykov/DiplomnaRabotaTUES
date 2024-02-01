@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://31c0bm4h3bnd"]
+
+[ext_resource type="Script" path="res://scripts/menager.cs" id="1_fl247"]
+[ext_resource type="Texture2D" uid="uid://vb66o5dmc64u" path="res://assets/characters/menager/hbar.png" id="1_s1aoj"]
+[ext_resource type="Texture2D" uid="uid://dpm2ksu2i0243" path="res://assets/characters/menager/abar.png" id="2_px2xx"]
+[ext_resource type="Texture2D" uid="uid://byomm4nm7d3nd" path="res://assets/characters/menager/sbar.png" id="3_sq70a"]
+[ext_resource type="Texture2D" uid="uid://1awea2oh8bq4" path="res://assets/characters/menager/examplemap.jpg" id="4_m0s12"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fl247")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Map1" type="Button" parent="."]
+offset_left = -530.0
+offset_top = 103.0
+offset_right = -478.0
+offset_bottom = 134.0
+text = "Map1"
+
+[node name="Map2" type="Button" parent="."]
+offset_left = -534.0
+offset_top = 154.0
+offset_right = -482.0
+offset_bottom = 185.0
+text = "Map2
+"
+
+[node name="Map3" type="Button" parent="."]
+offset_left = -538.0
+offset_top = 200.0
+offset_right = -486.0
+offset_bottom = 231.0
+text = "Map3"
+
+[node name="Map4" type="Button" parent="."]
+offset_left = -536.0
+offset_top = 246.0
+offset_right = -484.0
+offset_bottom = 277.0
+text = "Map4"
+
+[node name="ammoDrop" type="Button" parent="."]
+offset_left = -310.0
+offset_top = 254.0
+offset_right = -208.0
+offset_bottom = 285.0
+text = "Ammo Drop"
+
+[node name="healthDrop" type="Button" parent="."]
+offset_left = -442.0
+offset_top = 253.0
+offset_right = -340.0
+offset_bottom = 284.0
+text = "Health Drop
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(542, 173.895)
+rotation = -1.5708
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("1_s1aoj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(322, 173.895)
+rotation = -1.5708
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("2_px2xx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(433, 173.895)
+rotation = -1.5708
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("3_sq70a")
+
+[node name="map" type="Sprite2D" parent="."]
+position = Vector2(-281, -173)
+scale = Vector2(0.219167, 0.393312)
+texture = ExtResource("4_m0s12")
+
+[node name="map2" type="Sprite2D" parent="."]
+position = Vector2(42, -168)
+scale = Vector2(0.219167, 0.393312)
+texture = ExtResource("4_m0s12")
+
+[node name="map3" type="Sprite2D" parent="."]
+position = Vector2(39, 98)
+scale = Vector2(0.219167, 0.393312)
+texture = ExtResource("4_m0s12")
+
+[node name="map4" type="Sprite2D" parent="."]
+position = Vector2(-282, 101)
+scale = Vector2(0.219167, 0.393312)
+texture = ExtResource("4_m0s12")
