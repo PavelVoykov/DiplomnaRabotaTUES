@@ -11,9 +11,6 @@ public partial class multiplayer : Node2D
 	private Camera2D camera;
 	LineEdit message;
 	TextEdit chat;
-	[Signal]
-	public delegate void PlayerConnectedDelegateEventHandler(int id);
-	public event PlayerConnectedDelegateEventHandler PlayerConnected;
 	public override void _Ready()
 	{
 		peer = new ENetMultiplayerPeer();
@@ -33,9 +30,9 @@ public partial class multiplayer : Node2D
 		}else{
 			GD.Print("Created");
 		}
-		Multiplayer.ConnectedToServer += Connected;
 		Multiplayer.MultiplayerPeer = peer;
-		PlayerConnected += AddPlayer;
+		Multiplayer.PeerConnected += AddMenager;
+		
 		AddPlayer();
 		GetNode<Control>("Host").ReleaseFocus();
 		camera.Enabled = false;
@@ -46,20 +43,21 @@ public partial class multiplayer : Node2D
 		AddChild(maps);
 	}
 	private void _on_join_pressed(){
-	Error err = peer.CreateClient("127.0.0.1", 123);
+	Multiplayer.ConnectedToServer += Connected;
+	Multiplayer.ConnectionFailed += Fail;
+	Error err = peer.CreateClient("localhost", 123);
 	if (err != Error.Ok) {
 		GD.Print("Failed to connect to server: " + err);
 		return;
 	}
-	Multiplayer.ConnectedToServer += Connected;
+	
 	Multiplayer.MultiplayerPeer = peer;
-	AddMenager();
 	GetNode<Control>("Join").ReleaseFocus();
 	camera.Enabled = false;
 	}
-	private void AddMenager(){
+	private void AddMenager(long id){
 		menager = (menager)menager_node.Instantiate();
-		menager.Name = "menager";//id.ToString();
+		menager.Name = id.ToString();
 		AddChild(menager);
 	}
 	private void _on_button_pressed()
@@ -74,6 +72,9 @@ public partial class multiplayer : Node2D
 	}
 	private void Connected(){
 		GD.Print("Connected");
+	}
+	private void Fail(){
+		GD.Print("Connection failed");
 	}
 }
 
