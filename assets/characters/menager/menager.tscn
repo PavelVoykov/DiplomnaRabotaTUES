@@ -1,43 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://31c0bm4h3bnd"]
+[gd_scene load_steps=9 format=3 uid="uid://31c0bm4h3bnd"]
 
 [ext_resource type="Script" path="res://scripts/menager.cs" id="1_fl247"]
 [ext_resource type="Texture2D" uid="uid://vb66o5dmc64u" path="res://assets/characters/menager/hbar.png" id="1_s1aoj"]
 [ext_resource type="Texture2D" uid="uid://dpm2ksu2i0243" path="res://assets/characters/menager/abar.png" id="2_px2xx"]
-[ext_resource type="Texture2D" uid="uid://byomm4nm7d3nd" path="res://assets/characters/menager/sbar.png" id="3_sq70a"]
-[ext_resource type="Texture2D" uid="uid://1awea2oh8bq4" path="res://assets/characters/menager/examplemap.jpg" id="4_m0s12"]
+[ext_resource type="Texture2D" uid="uid://cd73udywy57af" path="res://assets/characters/menager/examplemap1.png" id="5_a18ir"]
+[ext_resource type="Texture2D" uid="uid://c1b0vfhmie60v" path="res://assets/characters/menager/examplemap2.png" id="6_x5eo1"]
+[ext_resource type="Texture2D" uid="uid://cr35geyfmvuvb" path="res://assets/characters/menager/examplemap3.png" id="7_rq6hs"]
+[ext_resource type="Texture2D" uid="uid://covdbg8kby1ka" path="res://assets/characters/menager/examplemap4.png" id="8_nnlx5"]
+
+[sub_resource type="SystemFont" id="SystemFont_g6w7u"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(578, 326)
+scale = Vector2(101.015, 101.015)
 script = ExtResource("1_fl247")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.01, 0.01)
 
 [node name="Map1" type="Button" parent="."]
-offset_left = -530.0
-offset_top = 103.0
-offset_right = -478.0
-offset_bottom = 134.0
+offset_left = -275.0
+offset_top = -306.0
+offset_right = -223.0
+offset_bottom = -275.0
 text = "Map1"
 
 [node name="Map2" type="Button" parent="."]
-offset_left = -534.0
-offset_top = 154.0
-offset_right = -482.0
-offset_bottom = 185.0
+offset_left = 58.0
+offset_top = -295.0
+offset_right = 110.0
+offset_bottom = -264.0
 text = "Map2
 "
 
 [node name="Map3" type="Button" parent="."]
-offset_left = -538.0
-offset_top = 200.0
-offset_right = -486.0
-offset_bottom = 231.0
+offset_left = -306.0
+offset_top = 210.0
+offset_right = -254.0
+offset_bottom = 241.0
 text = "Map3"
 
 [node name="Map4" type="Button" parent="."]
-offset_left = -536.0
-offset_top = 246.0
-offset_right = -484.0
-offset_bottom = 277.0
+offset_left = 60.0
+offset_top = 224.0
+offset_right = 112.0
+offset_bottom = 255.0
 text = "Map4"
 
 [node name="ammoDrop" type="Button" parent="."]
@@ -67,28 +74,57 @@ rotation = -1.5708
 scale = Vector2(0.175, 0.175)
 texture = ExtResource("2_px2xx")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(433, 173.895)
-rotation = -1.5708
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("3_sq70a")
-
 [node name="map" type="Sprite2D" parent="."]
-position = Vector2(-281, -173)
-scale = Vector2(0.219167, 0.393312)
-texture = ExtResource("4_m0s12")
+position = Vector2(-272, -141.874)
+scale = Vector2(0.427689, 0.539833)
+texture = ExtResource("5_a18ir")
 
 [node name="map2" type="Sprite2D" parent="."]
-position = Vector2(42, -168)
-scale = Vector2(0.219167, 0.393312)
-texture = ExtResource("4_m0s12")
+position = Vector2(78.3525, -140.695)
+scale = Vector2(0.418883, 0.542456)
+texture = ExtResource("6_x5eo1")
 
 [node name="map3" type="Sprite2D" parent="."]
-position = Vector2(39, 98)
-scale = Vector2(0.219167, 0.393312)
-texture = ExtResource("4_m0s12")
+position = Vector2(-272.5, 85)
+scale = Vector2(0.414081, 0.551724)
+texture = ExtResource("7_rq6hs")
 
 [node name="map4" type="Sprite2D" parent="."]
-position = Vector2(-282, 101)
-scale = Vector2(0.219167, 0.393312)
-texture = ExtResource("4_m0s12")
+position = Vector2(78.2678, 85.5)
+scale = Vector2(0.418575, 0.5625)
+texture = ExtResource("8_nnlx5")
+
+[node name="Health" type="Label" parent="."]
+offset_left = 446.0
+offset_right = 551.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.447059, 0, 0.121569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = -3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_g6w7u")
+theme_override_font_sizes/font_size = 31
+
+[node name="Bullets" type="Label" parent="."]
+offset_left = 264.0
+offset_right = 369.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.447059, 0, 0.121569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = -3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_g6w7u")
+theme_override_font_sizes/font_size = 31
+
+[connection signal="pressed" from="Map1" to="." method="_on_map_1_pressed"]
+[connection signal="pressed" from="Map2" to="." method="_on_map_2_pressed"]
+[connection signal="pressed" from="Map3" to="." method="_on_map_3_pressed"]
+[connection signal="pressed" from="Map4" to="." method="_on_map_4_pressed"]
+[connection signal="pressed" from="ammoDrop" to="." method="_on_ammo_drop_pressed"]
+[connection signal="pressed" from="healthDrop" to="." method="_on_health_drop_pressed"]

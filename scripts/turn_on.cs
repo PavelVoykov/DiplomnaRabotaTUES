@@ -21,14 +21,14 @@ public partial class turn_on : Node2D
 	}
 	
 	public void activate(){
-		GetNode("Area2D").SetProcess(false);
 		SetProcess(false);
+		player.Call("setActive", true);
 		camera.Enabled = true;	
 	}
 	
 	public void deactivate(){
-		GetNode("Area2D").SetProcess(true);
 		SetProcess(true);
+		player.Call("setActive", false);
 		camera.Enabled = false;	
 	}
 }

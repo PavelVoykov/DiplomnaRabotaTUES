@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cq5j3wdib83vn"]
+
+[ext_resource type="Texture2D" uid="uid://dyejxtuxykipr" path="res://assets/sprites/enemy/Scorpio_idle.png" id="1_a7w3w"]
+[ext_resource type="Script" path="res://scripts/enemy.cs" id="1_heiub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dk076"]
+size = Vector2(20, 14.1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak2px"]
+atlas = ExtResource("1_a7w3w")
+region = Rect2(0, 23, 48, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx18f"]
+atlas = ExtResource("1_a7w3w")
+region = Rect2(48, 23, 48, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0krht"]
+atlas = ExtResource("1_a7w3w")
+region = Rect2(96, 23, 48, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geb86"]
+atlas = ExtResource("1_a7w3w")
+region = Rect2(144, 23, 48, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0enq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak2px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx18f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0krht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geb86")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(20, 20)
+script = ExtResource("1_heiub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 2.95)
+shape = SubResource("RectangleShape2D_dk076")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-3.55, 2.65)
+scale = Vector2(0.604, 0.583)
+sprite_frames = SubResource("SpriteFrames_c0enq")
+frame_progress = 0.38198

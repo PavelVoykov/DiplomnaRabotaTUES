@@ -23,42 +23,13 @@ public partial class map_switch : Node2D
 		p3check = player3.GetNode<Area2D>("Area2D");
 		player4 = GetNode("TileMap4").GetNode<Node2D>("1");
 		p4check = player4.GetNode<Area2D>("Area2D");
-		player1.Call("activate");
+		map1();
 		GetParent().GetNode<MultiplayerSpawner>("MultiplayerSpawner").SpawnPath = this.GetPath();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		if(Input.IsActionJustReleased("map1") && !(bool)p1check.Call("Overlapps")){
-					player1.Call("activate");
-					player2.Call("deactivate");
-					player3.Call("deactivate");
-					player4.Call("deactivate");
-					activeMap = 1;
-					GD.Print("Map1");	
-		}else if(Input.IsActionJustReleased("map2") && !(bool)p2check.Call("Overlapps")){
-					player1.Call("deactivate");
-					player2.Call("activate");
-					player3.Call("deactivate");
-					player4.Call("deactivate");
-					activeMap = 2;
-					GD.Print("Map2");	
-		}else if(Input.IsActionJustReleased("map3") && !(bool)p3check.Call("Overlapps")){
-					player1.Call("deactivate");
-					player2.Call("deactivate");
-					player3.Call("activate");
-					player4.Call("deactivate");
-					activeMap = 3;
-					GD.Print("Map3");	
-		}else if(Input.IsActionJustReleased("map4") && !(bool)p4check.Call("Overlapps")){
-					player1.Call("deactivate");
-					player2.Call("deactivate");
-					player3.Call("deactivate");
-					player4.Call("activate");
-					activeMap = 4;
-					GD.Print("Map4");	
-		}
 		switch(activeMap){
 			case 1:
 				player2.Position = player1.Position;
@@ -83,5 +54,76 @@ public partial class map_switch : Node2D
 		}
 		
 	}
-	
+	public void map1(){
+		if(!(bool)p1check.Call("Overlapps")){
+			player1.Call("activate");
+			player2.Call("deactivate");
+			player3.Call("deactivate");
+			player4.Call("deactivate");
+			activeMap = 1;
+			GD.Print("Map1");	
+		}
+	}
+	public void map2(){
+		if(!(bool)p2check.Call("Overlapps")){
+			player2.Call("activate");
+			player1.Call("deactivate");
+			player3.Call("deactivate");
+			player4.Call("deactivate");
+			activeMap = 2;
+			GD.Print("Map2");	
+		}
+	}
+	public void map3(){
+		if(!(bool)p3check.Call("Overlapps")){
+			player3.Call("activate");
+			player2.Call("deactivate");
+			player1.Call("deactivate");
+			player4.Call("deactivate");
+			activeMap = 3;
+			GD.Print("Map3");	
+		}
+	}
+	public void map4(){
+		if(!(bool)p4check.Call("Overlapps")){
+			player4.Call("activate");
+			player2.Call("deactivate");
+			player3.Call("deactivate");
+			player1.Call("deactivate");
+			activeMap = 4;
+			GD.Print("Map4");	
+		}
+	}
+	public void refill(){
+				switch(activeMap){
+			case 1:
+				player1.GetNode("CharacterBody2D").Call("refill");
+				break;
+			case 2:
+				player2.GetNode("CharacterBody2D").Call("refill");
+				break;
+			case 3:
+				player3.GetNode("CharacterBody2D").Call("refill");
+				break;
+			case 4:
+				player4.GetNode("CharacterBody2D").Call("refill");
+				break;
+		}
+	}
+	public void die(){
+				switch(activeMap){
+			case 1:
+				player1.GetNode("CharacterBody2D").Call("die");
+				break;
+			case 2:
+				player2.GetNode("CharacterBody2D").Call("die");
+				break;
+			case 3:
+				player3.GetNode("CharacterBody2D").Call("die");
+				break;
+			case 4:
+				player4.GetNode("CharacterBody2D").Call("die");
+				break;
+		}
+	}
 }

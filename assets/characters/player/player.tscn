@@ -1,17 +1,27 @@
-[gd_scene load_steps=36 format=3 uid="uid://b1pookl0mqjxm"]
+[gd_scene load_steps=46 format=3 uid="uid://b1pookl0mqjxm"]
 
 [ext_resource type="Script" path="res://scripts/player.cs" id="1_w14kr"]
 [ext_resource type="Script" path="res://scripts/turn_on.cs" id="1_wj8bo"]
 [ext_resource type="Texture2D" uid="uid://hnvq07vbj5ox" path="res://assets/sprites/mech/Jump (6).png" id="2_86m7d"]
 [ext_resource type="Texture2D" uid="uid://ckybfvq8gi1pj" path="res://assets/sprites/mech/Jump (7).png" id="3_4xce4"]
+[ext_resource type="Texture2D" uid="uid://oms5cqh2anxf" path="res://assets/sprites/mech/Dead (1).png" id="3_6o4ro"]
+[ext_resource type="Texture2D" uid="uid://cax57hshfu6qn" path="res://assets/sprites/mech/Dead (2).png" id="4_3mksi"]
 [ext_resource type="Texture2D" uid="uid://dg6gyg4sawtom" path="res://assets/sprites/mech/Jump (8).png" id="4_yvm6p"]
+[ext_resource type="Texture2D" uid="uid://c05ssai8vu0kj" path="res://assets/sprites/mech/Dead (3).png" id="5_8wh7e"]
 [ext_resource type="Texture2D" uid="uid://wyfxixe05u3g" path="res://assets/sprites/mech/Jump (9).png" id="5_t60m7"]
 [ext_resource type="Texture2D" uid="uid://oqxhgdm1yyma" path="res://assets/sprites/mech/Jump (10).png" id="6_k12y8"]
+[ext_resource type="Texture2D" uid="uid://ca1ym1p4avofl" path="res://assets/sprites/mech/Dead (4).png" id="6_qgshw"]
+[ext_resource type="Texture2D" uid="uid://dqdqua5p7m5is" path="res://assets/sprites/mech/Dead (5).png" id="7_rlxtc"]
 [ext_resource type="Texture2D" uid="uid://pa76pugorjy6" path="res://assets/sprites/mech/Idle (1).png" id="7_uuytn"]
 [ext_resource type="Texture2D" uid="uid://b1tvbdtnruxen" path="res://assets/sprites/mech/Idle (2).png" id="8_3iwcn"]
+[ext_resource type="Texture2D" uid="uid://bkfm68oyymocj" path="res://assets/sprites/mech/Dead (6).png" id="8_vpjoc"]
+[ext_resource type="Texture2D" uid="uid://bcf13gxa12csw" path="res://assets/sprites/mech/Dead (7).png" id="9_jfnnx"]
 [ext_resource type="Texture2D" uid="uid://duj2cgn05nruw" path="res://assets/sprites/mech/Idle (3).png" id="9_jrdvu"]
+[ext_resource type="Texture2D" uid="uid://c05q0y1unndml" path="res://assets/sprites/mech/Dead (8).png" id="10_fq1gk"]
 [ext_resource type="Texture2D" uid="uid://dt8uwi7anglqx" path="res://assets/sprites/mech/Idle (4).png" id="10_og6ul"]
+[ext_resource type="Texture2D" uid="uid://cemac0fyiwwge" path="res://assets/sprites/mech/Dead (9).png" id="11_b5xsd"]
 [ext_resource type="Texture2D" uid="uid://bqsmayk1mjpke" path="res://assets/sprites/mech/Idle (5).png" id="11_yakna"]
+[ext_resource type="Texture2D" uid="uid://d3mx8aw2rg26r" path="res://assets/sprites/mech/Dead (10).png" id="12_7il0r"]
 [ext_resource type="Texture2D" uid="uid://c18horpgggoe8" path="res://assets/sprites/mech/Idle (6).png" id="12_q4x58"]
 [ext_resource type="Texture2D" uid="uid://d3ql3oinewd77" path="res://assets/sprites/mech/Idle (7).png" id="13_2k0lw"]
 [ext_resource type="Texture2D" uid="uid://cmqkkbfuv6hc8" path="res://assets/sprites/mech/Idle (8).png" id="14_ksvg6"]
@@ -40,6 +50,41 @@ height = 442.4
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umsdf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6o4ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3mksi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8wh7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qgshw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rlxtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vpjoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jfnnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fq1gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b5xsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7il0r")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_86m7d")
@@ -181,7 +226,7 @@ shape = SubResource("CapsuleShape2D_y5wws")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(8, -1)
 sprite_frames = SubResource("SpriteFrames_umsdf")
-animation = &"Run"
+animation = &"Falling"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(0.2, 0.2)
@@ -194,6 +239,9 @@ zoom = Vector2(0.2, 0.2)
 position = Vector2(0, -178)
 target_position = Vector2(0, -32)
 
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+one_shot = true
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 128
@@ -201,4 +249,5 @@ script = ExtResource("32_hf1b7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 12)
+scale = Vector2(0.99, 0.99)
 shape = SubResource("CapsuleShape2D_y5wws")

@@ -32,6 +32,12 @@ public partial class player: CharacterBody2D{
 		Vector2 velocity = Vector2.Zero;
 		private bullet bullet;
 		private Camera2D camera;
+		Node2D root;
+		Timer timer;
+		public bool active = false;
+		public bool bullets = true;
+		public bool dead = false;
+		CollisionShape2D collisionShape;
 		public override void _Ready(){
 			
 			sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -41,11 +47,13 @@ public partial class player: CharacterBody2D{
 			bulletScene = ResourceLoader.Load<PackedScene>("res://assets/objects/bullet.tscn");
 			camera = GetNode<Camera2D>("Camera2D");
 			camera.Enabled = false;
-			
+			root = (Node2D)GetParent().GetParent().GetParent().GetParent();
+			timer = GetNode<Timer>("Timer");
+			collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		}
 		
 		public override void _PhysicsProcess(double delta){	
-			if (IsMultiplayerAuthority()){
+			if (IsMultiplayerAuthority() && active && !dead){
 				bool jump = Input.IsActionPressed("jump") && !isJumpPressed && (IsOnFloor() || (bool)coyote_time.Call("isCoyote") && !jumped);
 				bool falling = !IsOnFloor() && Velocity.Y > 0.0;
 				bool jump_canclled = Input.IsActionJustReleased("jump") && Velocity.Y < 0.0;
@@ -62,9 +70,7 @@ public partial class player: CharacterBody2D{
 				}
 				if(jump){
 					velocity.Y = -jump_str;
-					isJumpPressed = true;
-				}else if(jump){
-					velocity.Y = -jump_str;
+					
 					isJumpPressed = true;
 				}else if(jump_canclled){
 					velocity.Y = 0;
@@ -74,32 +80,34 @@ public partial class player: CharacterBody2D{
 				}
 				if(Input.IsActionJustReleased("jump")){
 					isJumpPressed = false;
+					isCoyoteTriggered = true;
 				}
 				if(Input.IsActionJustReleased("dash")){
 					isDashPressed = false;
 				}
 				
-				if(Input.IsActionPressed("shoot") && !shoot){
+				if(Input.IsActionPressed("shoot") && !shoot && bullets){
 					shoot = true;
 					bullet = (bullet)bulletScene.Instantiate();
 					AddChild(bullet);
 					Vector2 mousePosition = GetGlobalMousePosition();
 					float angle = Mathf.Atan2(mousePosition.Y - this.GlobalPosition.Y, mousePosition.X - this.GlobalPosition.X);
 					bullet.Rotation = Mathf.DegToRad(Mathf.RadToDeg(angle)-90);
-					
+					Godot.Collections.Array arguments = new Godot.Collections.Array { bullets };
+					root.Call("callRcp", 3, arguments);
 					
 				}else if(Input.IsActionJustReleased("shoot")){
 					shoot = false;
 				}
-				
-				if(jump && !jumped){
-					sprite.Play("Jump");
-					jumped = true;
-				}else if(idle){
+				if(idle){
 					sprite.Play("Idle");
 					isCoyoteTriggered = false;
 					jumped = false;
-				}else  if(falling && !isCoyoteTriggered){
+				}
+				if(jump && !jumped){
+					sprite.Play("Jump");
+					jumped = true;
+				}else if(falling && !isCoyoteTriggered){
 					coyote_time.Call("startTime", coyoteDuration);
 					sprite.Play("Falling");
 					isCoyoteTriggered = true;
@@ -125,9 +133,37 @@ public partial class player: CharacterBody2D{
 				this.Position = new Vector2(0, 0);
 			}
 			MoveAndSlide();
+			damage();
+				
 		}
-		
-		 public Vector2 getVelocity(){
+		public	void damage(){
+			for(int i = 0; i < GetSlideCollisionCount(); i++){
+				KinematicCollision2D collision = GetSlideCollision(i);
+				if((collision.GetCollider() as Node).GetParent().Name == "Enemy" && timer.IsStopped()){
+					timer.WaitTime = 1F;
+					timer.Start();
+					Godot.Collections.Array arguments = new Godot.Collections.Array { 10 };
+					root.Call("callRcp", 2, arguments);
+				}
+			}
+		}
+		public Vector2 getVelocity(){
 			return velocity;
+		}
+		public void setActive(bool active){
+			this.active = active;
+			collisionShape.SetDeferred("disabled", !active);
+		}
+		public void refill(){
+			bullets = true;
+		}
+		public void die(){
+			dead = true;
+			SetProcess(false);
+			sprite.AnimationFinished += finish;
+			sprite.Play("Death");
+		}
+		public void finish(){
+			GetTree().Paused = true;
 		}
 }
