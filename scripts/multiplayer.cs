@@ -9,7 +9,6 @@ public partial class multiplayer : Node2D
 	private menager menager;
 	private map_switch maps;
 	private Camera2D camera;
-	TextEdit chat;
 	long new_peer_id;
 	public override void _Ready()
 	{
@@ -17,7 +16,6 @@ public partial class multiplayer : Node2D
 		maps_node = ResourceLoader.Load<PackedScene>("res://scenes/node_2d.tscn");
 		menager_node = ResourceLoader.Load<PackedScene>("res://assets/characters/menager/menager.tscn");
 		camera = GetNode<Camera2D>("Camera2D");
-		chat = GetNode<TextEdit>("TextEdit");
 	}
 	
 	private void _on_host_pressed(){
@@ -47,7 +45,7 @@ public partial class multiplayer : Node2D
 	Multiplayer.ConnectedToServer += Connected;
 	AddMenager();
 	Multiplayer.ConnectionFailed += Fail;
-	Error err = peer.CreateClient("localhost", 123);
+	Error err = peer.CreateClient("95.87.219.69", 123);
 	if (err != Error.Ok) {
 		GD.Print("Failed to connect to server: " + err);
 		return;
@@ -73,15 +71,8 @@ public partial class multiplayer : Node2D
 			Multiplayer.Rpc(1, this, "death", arguments);
 		}else if(type == 5){
 			Multiplayer.Rpc(1, this, "hasBullets", arguments);
-		}else{
-			Multiplayer.Rpc(1, this, "msg", arguments);	
 		}
 		
-	}
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	public void msg(String mess){
-		chat.Text += mess + '\n';
-		GD.Print("RECIEVED");
 	}
 	
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
@@ -99,7 +90,7 @@ public partial class multiplayer : Node2D
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void hasBullets(bool has){
 		Node2D node = GetNode<Node2D>("Node2D");
-		node.Call("refill");
+		node.Call("refill", has);
 	}
 	
 	[Rpc(MultiplayerApi.RpcMode.Authority)]

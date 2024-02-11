@@ -38,11 +38,5 @@ spawn_limit = 2
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_2a77g")
 
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 283.0
-offset_top = -278.0
-offset_right = 542.0
-offset_bottom = -95.0
-
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

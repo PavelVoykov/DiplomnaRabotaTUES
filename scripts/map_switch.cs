@@ -94,21 +94,11 @@ public partial class map_switch : Node2D
 			GD.Print("Map4");	
 		}
 	}
-	public void refill(){
-				switch(activeMap){
-			case 1:
-				player1.GetNode("CharacterBody2D").Call("refill");
-				break;
-			case 2:
-				player2.GetNode("CharacterBody2D").Call("refill");
-				break;
-			case 3:
-				player3.GetNode("CharacterBody2D").Call("refill");
-				break;
-			case 4:
-				player4.GetNode("CharacterBody2D").Call("refill");
-				break;
-		}
+	public void refill(bool has){
+		player1.GetNode("CharacterBody2D").Call("refill", has);
+		player2.GetNode("CharacterBody2D").Call("refill", has);
+		player3.GetNode("CharacterBody2D").Call("refill", has);
+		player4.GetNode("CharacterBody2D").Call("refill", has);
 	}
 	public void die(){
 				switch(activeMap){

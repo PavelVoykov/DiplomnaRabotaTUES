@@ -1,8 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://31c0bm4h3bnd"]
+[gd_scene load_steps=7 format=3 uid="uid://31c0bm4h3bnd"]
 
 [ext_resource type="Script" path="res://scripts/menager.cs" id="1_fl247"]
-[ext_resource type="Texture2D" uid="uid://vb66o5dmc64u" path="res://assets/characters/menager/hbar.png" id="1_s1aoj"]
-[ext_resource type="Texture2D" uid="uid://dpm2ksu2i0243" path="res://assets/characters/menager/abar.png" id="2_px2xx"]
 [ext_resource type="Texture2D" uid="uid://cd73udywy57af" path="res://assets/characters/menager/examplemap1.png" id="5_a18ir"]
 [ext_resource type="Texture2D" uid="uid://c1b0vfhmie60v" path="res://assets/characters/menager/examplemap2.png" id="6_x5eo1"]
 [ext_resource type="Texture2D" uid="uid://cr35geyfmvuvb" path="res://assets/characters/menager/examplemap3.png" id="7_rq6hs"]
@@ -62,18 +60,6 @@ offset_bottom = 284.0
 text = "Health Drop
 "
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(542, 173.895)
-rotation = -1.5708
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("1_s1aoj")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(322, 173.895)
-rotation = -1.5708
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("2_px2xx")
-
 [node name="map" type="Sprite2D" parent="."]
 position = Vector2(-272, -141.874)
 scale = Vector2(0.427689, 0.539833)
@@ -95,9 +81,10 @@ scale = Vector2(0.418575, 0.5625)
 texture = ExtResource("8_nnlx5")
 
 [node name="Health" type="Label" parent="."]
-offset_left = 446.0
-offset_right = 551.0
-offset_bottom = 47.0
+offset_left = 263.0
+offset_top = 86.0
+offset_right = 452.0
+offset_bottom = 196.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.447059, 0, 0.121569, 1)
@@ -106,21 +93,22 @@ theme_override_constants/shadow_offset_y = -3
 theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 15
 theme_override_fonts/font = SubResource("SystemFont_g6w7u")
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 66
 
 [node name="Bullets" type="Label" parent="."]
-offset_left = 264.0
-offset_right = 369.0
-offset_bottom = 47.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+offset_left = 263.001
+offset_top = -31.7478
+offset_right = 452.001
+offset_bottom = 78.2522
+theme_override_colors/font_color = Color(0.956863, 0.788235, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.447059, 0, 0.121569, 1)
+theme_override_colors/font_outline_color = Color(0.447059, 0.333333, 0.117647, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = -3
 theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 15
 theme_override_fonts/font = SubResource("SystemFont_g6w7u")
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 66
 
 [connection signal="pressed" from="Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="Map2" to="." method="_on_map_2_pressed"]

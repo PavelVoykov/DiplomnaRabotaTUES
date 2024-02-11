@@ -131,10 +131,9 @@ public partial class player: CharacterBody2D{
 				
 				Velocity = velocity;
 				this.Position = new Vector2(0, 0);
+				MoveAndSlide();
+				damage();
 			}
-			MoveAndSlide();
-			damage();
-				
 		}
 		public	void damage(){
 			for(int i = 0; i < GetSlideCollisionCount(); i++){
@@ -154,8 +153,8 @@ public partial class player: CharacterBody2D{
 			this.active = active;
 			collisionShape.SetDeferred("disabled", !active);
 		}
-		public void refill(){
-			bullets = true;
+		public void refill(bool has){
+			bullets = has;
 		}
 		public void die(){
 			dead = true;
