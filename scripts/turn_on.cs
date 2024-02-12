@@ -3,30 +3,31 @@ using System;
 
 public partial class turn_on : Node2D
 {
+	Vector2 velocity;//8i9aqu76
 	Camera2D camera;
 	Node2D player;
-	Vector2 velocity;
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
-		camera = GetNode("CharacterBody2D").GetNode<Camera2D>("Camera2D");
-		player = GetNode<Node2D>("CharacterBody2D");
+		camera = GetNode("PlayerBody").GetNode<Camera2D>("Camera2D");
+		player = GetNode<Node2D>("PlayerBody");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		
 		this.GlobalPosition = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y);
 	}
 	
-	public void activate(){
+	public void activate()
+	{
 		SetProcess(false);
 		player.Call("setActive", true);
 		camera.Enabled = true;	
 	}
 	
-	public void deactivate(){
+	public void deactivate()
+	{
 		SetProcess(true);
 		player.Call("setActive", false);
 		camera.Enabled = false;	

@@ -3,24 +3,26 @@ using System;
 
 public partial class dash : Node2D
 {
-	Timer timer;
-	Timer timer2;
+	Timer dashTimer;
+	Timer dashDelayTimer;
 	public override void _Ready()
 	{
-		timer = GetNode<Timer>("Timer");
-		timer2 = GetNode<Timer>("Timer2");
+		dashTimer = GetNode<Timer>("Dash");
+		dashDelayTimer = GetNode<Timer>("DashDelay");
 	}
 
 	public void startDash(float duration){
 		
-		if(timer2.IsStopped()){
-			timer.WaitTime = duration;
-			timer.Start();
-			timer2.WaitTime = 1F;
-			timer2.Start();
+		if(dashDelayTimer.IsStopped()){
+			dashTimer.WaitTime = duration;
+			dashTimer.Start();
+			dashDelayTimer.WaitTime = 1F;
+			dashDelayTimer.Start();
 		}
 	}
-	public bool isDashing(){
-		return !timer.IsStopped();
+	
+	public bool isDashing()
+	{
+		return !dashTimer.IsStopped();
 	}
 }

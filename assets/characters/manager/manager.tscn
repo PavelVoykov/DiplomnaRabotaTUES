@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://31c0bm4h3bnd"]
+
+[ext_resource type="Script" path="res://scripts/manager.cs" id="1_xijyn"]
+[ext_resource type="Texture2D" uid="uid://cd73udywy57af" path="res://assets/characters/manager/examplemap1.png" id="2_us2mp"]
+[ext_resource type="Texture2D" uid="uid://c1b0vfhmie60v" path="res://assets/characters/manager/examplemap2.png" id="3_86y1i"]
+[ext_resource type="Texture2D" uid="uid://cr35geyfmvuvb" path="res://assets/characters/manager/examplemap3.png" id="4_l1no7"]
+[ext_resource type="Texture2D" uid="uid://covdbg8kby1ka" path="res://assets/characters/manager/examplemap4.png" id="5_gxoft"]
+
+[sub_resource type="SystemFont" id="SystemFont_g6w7u"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(578, 326)
+scale = Vector2(101.015, 101.015)
+script = ExtResource("1_xijyn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.01, 0.01)
+
+[node name="Map1" type="Button" parent="."]
+offset_left = -275.0
+offset_top = -306.0
+offset_right = -223.0
+offset_bottom = -275.0
+text = "Map1"
+
+[node name="Map2" type="Button" parent="."]
+offset_left = 58.0
+offset_top = -295.0
+offset_right = 110.0
+offset_bottom = -264.0
+text = "Map2
+"
+
+[node name="Map3" type="Button" parent="."]
+offset_left = -306.0
+offset_top = 210.0
+offset_right = -254.0
+offset_bottom = 241.0
+text = "Map3"
+
+[node name="Map4" type="Button" parent="."]
+offset_left = 60.0
+offset_top = 224.0
+offset_right = 112.0
+offset_bottom = 255.0
+text = "Map4"
+
+[node name="ammoDrop" type="Button" parent="."]
+offset_left = -310.0
+offset_top = 254.0
+offset_right = -208.0
+offset_bottom = 285.0
+text = "Ammo Drop"
+
+[node name="healthDrop" type="Button" parent="."]
+offset_left = -442.0
+offset_top = 253.0
+offset_right = -340.0
+offset_bottom = 284.0
+text = "Health Drop
+"
+
+[node name="map" type="Sprite2D" parent="."]
+position = Vector2(-272, -141.874)
+scale = Vector2(0.427689, 0.539833)
+texture = ExtResource("2_us2mp")
+
+[node name="map2" type="Sprite2D" parent="."]
+position = Vector2(78.3525, -140.695)
+scale = Vector2(0.418883, 0.542456)
+texture = ExtResource("3_86y1i")
+
+[node name="map3" type="Sprite2D" parent="."]
+position = Vector2(-272.5, 85)
+scale = Vector2(0.414081, 0.551724)
+texture = ExtResource("4_l1no7")
+
+[node name="map4" type="Sprite2D" parent="."]
+position = Vector2(78.2678, 85.5)
+scale = Vector2(0.418575, 0.5625)
+texture = ExtResource("5_gxoft")
+
+[node name="Health" type="Label" parent="."]
+offset_left = 263.0
+offset_top = 86.0
+offset_right = 452.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.447059, 0, 0.121569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = -3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_g6w7u")
+theme_override_font_sizes/font_size = 66
+
+[node name="Bullets" type="Label" parent="."]
+offset_left = 263.001
+offset_top = -31.7478
+offset_right = 452.001
+offset_bottom = 78.2522
+theme_override_colors/font_color = Color(0.956863, 0.788235, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.447059, 0.333333, 0.117647, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = -3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_g6w7u")
+theme_override_font_sizes/font_size = 66
+
+[connection signal="pressed" from="Map1" to="." method="_on_map_1_pressed"]
+[connection signal="pressed" from="Map2" to="." method="_on_map_2_pressed"]
+[connection signal="pressed" from="Map3" to="." method="_on_map_3_pressed"]
+[connection signal="pressed" from="Map4" to="." method="_on_map_4_pressed"]
+[connection signal="pressed" from="ammoDrop" to="." method="_on_ammo_drop_pressed"]
+[connection signal="pressed" from="healthDrop" to="." method="_on_health_drop_pressed"]

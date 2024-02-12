@@ -214,40 +214,38 @@ animations = [{
 [node name="Player" type="Node2D"]
 script = ExtResource("1_wj8bo")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="PlayerBody" type="CharacterBody2D" parent="."]
 script = ExtResource("1_w14kr")
-jump_str = 5000
-coyoteDuration = 6.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="PlayerCollision" type="CollisionShape2D" parent="PlayerBody"]
 position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_y5wws")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody"]
 position = Vector2(8, -1)
 sprite_frames = SubResource("SpriteFrames_umsdf")
 animation = &"Falling"
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="PlayerBody"]
 zoom = Vector2(0.2, 0.2)
 
-[node name="Dash" parent="CharacterBody2D" instance=ExtResource("30_5n7do")]
+[node name="Dash" parent="PlayerBody" instance=ExtResource("30_5n7do")]
 
-[node name="CoyoteTime" parent="CharacterBody2D" instance=ExtResource("31_afkub")]
+[node name="CoyoteTime" parent="PlayerBody" instance=ExtResource("31_afkub")]
 
-[node name="CeilingCheck" type="RayCast2D" parent="CharacterBody2D"]
+[node name="CeilingCheck" type="RayCast2D" parent="PlayerBody"]
 position = Vector2(0, -178)
 target_position = Vector2(0, -32)
 
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
+[node name="Timer" type="Timer" parent="PlayerBody"]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionCheck" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("32_hf1b7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionCheck"]
 position = Vector2(0, 12)
 scale = Vector2(0.99, 0.99)
 shape = SubResource("CapsuleShape2D_y5wws")

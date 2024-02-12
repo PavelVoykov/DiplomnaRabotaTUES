@@ -6,14 +6,17 @@ public partial class coyote_time : Node2D
 	Timer timer;
 	public override void _Ready()
 	{
-		timer = GetNode<Timer>("Timer");
+		timer = GetNode<Timer>("CoyoteTimer");
 	}
 
-	public void startTime(float duration){
+	public void startTime(float duration)
+	{
 		timer.WaitTime = duration;
 		timer.Start();
 	}
-	public bool isCoyote(){
+	
+	public bool isCoyote()
+	{
 		return !timer.IsStopped();
 	}
 }

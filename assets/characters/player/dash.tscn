@@ -5,8 +5,8 @@
 [node name="Dash" type="Node2D"]
 script = ExtResource("1_rj4aw")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Dash" type="Timer" parent="."]
 one_shot = true
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="DashDelay" type="Timer" parent="."]
 one_shot = true
