@@ -2,8 +2,8 @@ using Godot;
 using System;
 
 public partial class turn_on : Node2D
-{
-	Vector2 velocity;//8i9aqu76
+{	
+	//8i9aqu76
 	Camera2D camera;
 	Node2D player;
 
@@ -13,7 +13,6 @@ public partial class turn_on : Node2D
 		player = GetNode<Node2D>("PlayerBody");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
 		this.GlobalPosition = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y);

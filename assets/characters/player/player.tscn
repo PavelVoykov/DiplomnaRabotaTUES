@@ -225,6 +225,8 @@ shape = SubResource("CapsuleShape2D_y5wws")
 position = Vector2(8, -1)
 sprite_frames = SubResource("SpriteFrames_umsdf")
 animation = &"Falling"
+frame = 4
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="PlayerBody"]
 zoom = Vector2(0.2, 0.2)

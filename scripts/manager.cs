@@ -19,6 +19,7 @@ public partial class manager : Node2D
 		bullets = GetNode<Label>("Bullets");
 		health.Text = _healthPoints.ToString();
 		bullets.Text = _bulletCount.ToString();
+		GetNode<Control>("Map1").GrabFocus();
 	}
 	public override void _EnterTree(){
 		camera = GetNode<Camera2D>("Camera2D");

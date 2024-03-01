@@ -8,7 +8,7 @@ public partial class body_double : Area2D
 		if(HasOverlappingBodies())
 		{
 			return true;
-		}
+		}	
 		return false;
 	}
 }

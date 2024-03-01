@@ -17,6 +17,7 @@ public partial class multiplayer : Node2D
 		_managerNode = ResourceLoader.Load<PackedScene>("res://assets/characters/manager/manager.tscn");
 		_mapsNode = ResourceLoader.Load<PackedScene>("res://scenes/maps.tscn");
 		_camera = GetNode<Camera2D>("Camera2D");
+		GetNode<Control>("Host").GrabFocus();
 	}
 	
 	private void _on_host_pressed()
@@ -35,6 +36,8 @@ public partial class multiplayer : Node2D
 		
 		GetNode<Control>("Host").ReleaseFocus();
 		_camera.Enabled = false;
+		GetNode<Control>("Host").Visible = false;
+		GetNode<Control>("Join").Visible = false;
 	}
 		
 	private void _on_join_pressed()
@@ -45,7 +48,7 @@ public partial class multiplayer : Node2D
 		
 		Multiplayer.ConnectionFailed += Fail;
 		
-		Error err = Peer.CreateClient("", 123);
+		Error err = Peer.CreateClient("localhost", 123);
 		
 		if (err != Error.Ok)
 		{
@@ -57,6 +60,8 @@ public partial class multiplayer : Node2D
 		
 		GetNode<Control>("Join").ReleaseFocus();
 		_camera.Enabled = false;
+		GetNode<Control>("Host").Visible = false;
+		GetNode<Control>("Join").Visible = false;
 	}
 
 	private void AddPlayer(int id=1)
@@ -115,7 +120,7 @@ public partial class multiplayer : Node2D
 	public void hasBulletsToggle(bool hasBullets)
 	{
 		Node2D node = GetNode<Node2D>("Maps");
-		node.Call("refill", hasBullets);
+		node.Call("hasBullets", hasBullets);
 	}
 	
 	[Rpc(MultiplayerApi.RpcMode.Authority)]

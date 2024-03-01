@@ -17,74 +17,103 @@ script = ExtResource("1_xijyn")
 zoom = Vector2(0.01, 0.01)
 
 [node name="Map1" type="Button" parent="."]
-offset_left = -275.0
-offset_top = -306.0
-offset_right = -223.0
-offset_bottom = -275.0
+offset_left = -514.0
+offset_top = -294.0
+offset_right = -175.0
+offset_bottom = -244.0
+focus_neighbor_left = NodePath("../ammoDrop")
+focus_neighbor_top = NodePath("../Map3")
+focus_neighbor_right = NodePath("../Map2")
+focus_neighbor_bottom = NodePath("../Map3")
+theme_override_font_sizes/font_size = 29
 text = "Map1"
 
 [node name="Map2" type="Button" parent="."]
-offset_left = 58.0
-offset_top = -295.0
-offset_right = 110.0
-offset_bottom = -264.0
+offset_left = -164.0
+offset_top = -294.0
+offset_right = 175.0
+offset_bottom = -244.0
+focus_neighbor_left = NodePath("../Map1")
+focus_neighbor_top = NodePath("../Map4")
+focus_neighbor_right = NodePath("../ammoDrop")
+focus_neighbor_bottom = NodePath("../Map4")
+theme_override_font_sizes/font_size = 29
 text = "Map2
 "
 
 [node name="Map3" type="Button" parent="."]
-offset_left = -306.0
-offset_top = 210.0
-offset_right = -254.0
-offset_bottom = 241.0
+offset_left = -514.003
+offset_top = 232.342
+offset_right = -175.003
+offset_bottom = 282.342
+focus_neighbor_left = NodePath("../healthDrop")
+focus_neighbor_top = NodePath("../Map1")
+focus_neighbor_right = NodePath("../Map4")
+focus_neighbor_bottom = NodePath("../Map1")
+theme_override_font_sizes/font_size = 29
 text = "Map3"
 
 [node name="Map4" type="Button" parent="."]
-offset_left = 60.0
-offset_top = 224.0
-offset_right = 112.0
-offset_bottom = 255.0
+offset_left = -163.0
+offset_top = 232.0
+offset_right = 176.0
+offset_bottom = 282.0
+focus_neighbor_left = NodePath("../Map3")
+focus_neighbor_top = NodePath("../Map2")
+focus_neighbor_right = NodePath("../healthDrop")
+focus_neighbor_bottom = NodePath("../Map2")
+theme_override_font_sizes/font_size = 29
 text = "Map4"
 
 [node name="ammoDrop" type="Button" parent="."]
-offset_left = -310.0
-offset_top = 254.0
-offset_right = -208.0
-offset_bottom = 285.0
+offset_left = 281.829
+offset_top = -230.461
+offset_right = 464.829
+offset_bottom = -180.461
+focus_neighbor_left = NodePath("../Map2")
+focus_neighbor_top = NodePath("../healthDrop")
+focus_neighbor_right = NodePath("../Map1")
+focus_neighbor_bottom = NodePath("../healthDrop")
+theme_override_font_sizes/font_size = 29
 text = "Ammo Drop"
 
 [node name="healthDrop" type="Button" parent="."]
-offset_left = -442.0
-offset_top = 253.0
-offset_right = -340.0
-offset_bottom = 284.0
+offset_left = 281.829
+offset_right = 464.829
+offset_bottom = 50.0
+focus_neighbor_left = NodePath("../Map4")
+focus_neighbor_top = NodePath("../ammoDrop")
+focus_neighbor_right = NodePath("../Map3")
+focus_neighbor_bottom = NodePath("../ammoDrop")
+theme_override_font_sizes/font_size = 29
 text = "Health Drop
 "
 
 [node name="map" type="Sprite2D" parent="."]
-position = Vector2(-272, -141.874)
-scale = Vector2(0.427689, 0.539833)
+position = Vector2(-344.503, -120.333)
+scale = Vector2(0.419035, 0.539833)
 texture = ExtResource("2_us2mp")
 
 [node name="map2" type="Sprite2D" parent="."]
-position = Vector2(78.3525, -140.695)
-scale = Vector2(0.418883, 0.542456)
+position = Vector2(6.35321, -120.334)
+scale = Vector2(0.418883, 0.546537)
 texture = ExtResource("3_86y1i")
 
 [node name="map3" type="Sprite2D" parent="."]
-position = Vector2(-272.5, 85)
-scale = Vector2(0.414081, 0.551724)
+position = Vector2(-344.503, 107.538)
+scale = Vector2(0.404534, 0.551724)
 texture = ExtResource("4_l1no7")
 
 [node name="map4" type="Sprite2D" parent="."]
-position = Vector2(78.2678, 85.5)
-scale = Vector2(0.418575, 0.5625)
+position = Vector2(6.35364, 106.541)
+scale = Vector2(0.419, 0.563)
 texture = ExtResource("5_gxoft")
 
 [node name="Health" type="Label" parent="."]
-offset_left = 263.0
-offset_top = 86.0
-offset_right = 452.0
-offset_bottom = 196.0
+offset_left = 281.829
+offset_top = 50.0025
+offset_right = 470.829
+offset_bottom = 160.002
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.447059, 0, 0.121569, 1)
@@ -96,10 +125,10 @@ theme_override_fonts/font = SubResource("SystemFont_g6w7u")
 theme_override_font_sizes/font_size = 66
 
 [node name="Bullets" type="Label" parent="."]
-offset_left = 263.001
-offset_top = -31.7478
-offset_right = 452.001
-offset_bottom = 78.2522
+offset_left = 281.829
+offset_top = -180.458
+offset_right = 470.829
+offset_bottom = -70.4583
 theme_override_colors/font_color = Color(0.956863, 0.788235, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.447059, 0.333333, 0.117647, 1)

@@ -20,6 +20,8 @@ offset_left = 35392.0
 offset_top = -29389.0
 offset_right = 36136.0
 offset_bottom = -28927.0
+focus_neighbor_left = NodePath("../Join")
+focus_neighbor_right = NodePath("../Join")
 theme_override_font_sizes/font_size = 277
 text = "Host"
 
@@ -28,6 +30,8 @@ offset_left = 36317.0
 offset_top = -29389.0
 offset_right = 36941.0
 offset_bottom = -28911.0
+focus_neighbor_left = NodePath("../Host")
+focus_neighbor_right = NodePath("../Host")
 theme_override_font_sizes/font_size = 266
 text = "Join"
 
